@@ -26,6 +26,7 @@ public class Main {
         showInfoByIndex(2);
         service.saveUser("Katya", "Smirnova", (byte) 25);
         showInfoByIndex(3);
+
         System.out.println(service.getAllUsers());
         service.cleanUsersTable();
         service.dropUsersTable();
