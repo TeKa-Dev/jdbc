@@ -6,18 +6,22 @@ import java.sql.Statement;
 
 public class Util {
 
+    private static final String URL = "jdbc:mysql://localhost:3306/jdbc?useSSL=false&useUnicode=true&serverTimezone=UTC";
+    private static final String USER = "user";
+    private static final String PASS = "user";
+
     private static Statement statement;
 
-    static {
-        try {statement = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/jdbc", "user", "user")
-                    .createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static Statement getStatement() {
+        if (statement == null) {
+            try {
+                statement = DriverManager
+                        .getConnection(URL, USER, PASS)
+                        .createStatement();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return statement;
     }
 }
