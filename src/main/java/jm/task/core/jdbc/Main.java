@@ -4,6 +4,8 @@ import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
+import java.sql.SQLException;
+
 /*
 В методе main класса Main должны происходить следующие операции:
 
@@ -17,7 +19,7 @@ import jm.task.core.jdbc.util.Util;
 public class Main {
         static UserService service = new UserServiceImpl();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         service.createUsersTable();
         service.saveUser("Kolya", "Ivanov", (byte) 15);
         showNameByIndex(0);
@@ -32,7 +34,7 @@ public class Main {
         service.cleanUsersTable();
         service.dropUsersTable();
 
-        Util.connectionClose();
+        Util.getConnection().close();
     }
     static void showNameByIndex(int i) {
         System.out.println("User с именем – "

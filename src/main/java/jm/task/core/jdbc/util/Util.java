@@ -13,22 +13,15 @@ public class Util {
 
     private static Connection connection;
 
-    public static Connection getConnection() {
-        if (connection == null) {
-            try {
-                connection = DriverManager.getConnection(URL, USER, PASS);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return connection;
-    }
-
-    public static void connectionClose() {
+    static {
         try {
-            connection.close();
+            connection = DriverManager.getConnection(URL, USER, PASS);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static Connection getConnection() {
+        return connection;
     }
 }
