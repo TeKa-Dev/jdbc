@@ -40,7 +40,8 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public List<User> getAllUsers() {
-        try (ResultSet allSet = Util.getStatement().executeQuery("select * from users")) {
+        try (Statement statement = Util.getConnection().createStatement()) {
+            ResultSet allSet = statement.executeQuery("select * from users");
             List<User> allUsers = new ArrayList<>();
 
             while (allSet.next()) {
@@ -59,8 +60,8 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
         private static void offerQuery(String sql) {
-            try {
-                Util.getStatement().execute(sql);
+            try (Statement statement = Util.getConnection().createStatement()) {
+                statement.execute(sql);
             } catch (SQLException e) {
                 // ignore
             }

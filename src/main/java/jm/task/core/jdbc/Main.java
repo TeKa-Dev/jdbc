@@ -2,6 +2,7 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 
 /*
 В методе main класса Main должны происходить следующие операции:
@@ -30,6 +31,8 @@ public class Main {
         System.out.println(service.getAllUsers());
         service.cleanUsersTable();
         service.dropUsersTable();
+
+        Util.connectionClose();
     }
     static void showNameByIndex(int i) {
         System.out.println("User с именем – "
