@@ -19,19 +19,19 @@ public class Main {
     public static void main(String[] args) {
         service.createUsersTable();
         service.saveUser("Kolya", "Ivanov", (byte) 15);
-        showInfoByIndex(0);
+        showNameByIndex(0);
         service.saveUser("Sveta", "Sidorova", (byte) 20);
-        showInfoByIndex(1);
+        showNameByIndex(1);
         service.saveUser("Vasya", "Petrov", (byte) 30);
-        showInfoByIndex(2);
+        showNameByIndex(2);
         service.saveUser("Katya", "Smirnova", (byte) 25);
-        showInfoByIndex(3);
+        showNameByIndex(3);
 
         System.out.println(service.getAllUsers());
         service.cleanUsersTable();
         service.dropUsersTable();
     }
-    static void showInfoByIndex(int i) {
+    static void showNameByIndex(int i) {
         System.out.println("User с именем – "
                 + service.getAllUsers().get(i).getName()
                 +" добавлен в базу данных");
